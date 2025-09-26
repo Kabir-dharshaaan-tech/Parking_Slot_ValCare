@@ -1,10 +1,10 @@
-package com.parking_slot_reservation.service;
+package com.parking_slot.Parking_Slot_valcare.service;
 
 import java.time.OffsetDateTime;
 import java.util.List;
 
-import com.parking_slot_reservation.dto.SlotRequest;
-import com.parking_slot_reservation.entity.Slot;
+import com.parking_slot.Parking_Slot_valcare.dto.SlotRequest;
+import com.parking_slot.Parking_Slot_valcare.entity.Slot;
 
 public interface SlotService {
     Slot createSlot(SlotRequest request);

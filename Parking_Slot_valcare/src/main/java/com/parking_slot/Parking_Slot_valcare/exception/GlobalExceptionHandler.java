@@ -1,4 +1,4 @@
-package com.parking_slot_reservation.exception;
+package com.parking_slot.Parking_Slot_valcare.exception;
 
 import java.time.OffsetDateTime;
 import java.util.Map;

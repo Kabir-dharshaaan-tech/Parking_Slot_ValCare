@@ -1,4 +1,4 @@
-package com.parking_slot_reservation.controller;
+package com.parking_slot.Parking_Slot_valcare.controller;
 
 import java.net.URI;
 import java.time.OffsetDateTime;
@@ -12,17 +12,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.parking_slot_reservation.dto.SlotRequest;
-import com.parking_slot_reservation.entity.Slot;
-import com.parking_slot_reservation.service.SlotService;
+import com.parking_slot.Parking_Slot_valcare.dto.SlotRequest;
+import com.parking_slot.Parking_Slot_valcare.entity.Slot;
+import com.parking_slot.Parking_Slot_valcare.service.SlotService;
 
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/slots")
 public class SlotController {
+
     private final SlotService slotService;
-    public SlotController(SlotService slotService) { this.slotService = slotService; }
+
+    public SlotController(SlotService slotService) {
+        this.slotService = slotService;
+    }
 
     @PostMapping
     public ResponseEntity<Slot> createSlot(@Valid @RequestBody SlotRequest request) {
@@ -33,7 +37,8 @@ public class SlotController {
     @GetMapping
     public ResponseEntity<List<Slot>> getSlots(@RequestParam(value = "floorId", required = false) Long floorId) {
         if (floorId == null) {
-            return ResponseEntity.ok(List.of()); // for brevity
+            // Optional: replace List.of() with slotService.getAllSlots() if you have that method
+            return ResponseEntity.ok(List.of());
         } else {
             return ResponseEntity.ok(slotService.getSlotsByFloor(floorId));
         }

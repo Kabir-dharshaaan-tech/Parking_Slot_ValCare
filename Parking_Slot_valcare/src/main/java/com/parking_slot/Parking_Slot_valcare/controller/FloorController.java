@@ -1,8 +1,8 @@
-package com.parking_slot_reservation.controller;
+package com.parking_slot.Parking_Slot_valcare.controller;
 
-import com.parking_slot_reservation.dto.FloorRequest;
-import com.parking_slot_reservation.entity.Floor;
-import com.parking_slot_reservation.service.FloorService;
+import com.parking_slot.Parking_Slot_valcare.dto.FloorRequest;
+import com.parking_slot.Parking_Slot_valcare.entity.Floor;
+import com.parking_slot.Parking_Slot_valcare.service.FloorService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,8 +13,12 @@ import java.util.List;
 @RestController
 @RequestMapping("/floors")
 public class FloorController {
+
     private final FloorService floorService;
-    public FloorController(FloorService floorService) { this.floorService = floorService; }
+
+    public FloorController(FloorService floorService) {
+        this.floorService = floorService;
+    }
 
     @PostMapping
     public ResponseEntity<Floor> createFloor(@Valid @RequestBody FloorRequest request) {

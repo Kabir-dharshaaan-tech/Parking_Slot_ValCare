@@ -1,5 +1,4 @@
-
-package com.parking_slot_reservation.controller;
+package com.parking_slot.Parking_Slot_valcare.controller;
 
 import java.net.URI;
 import java.util.List;
@@ -13,17 +12,21 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.parking_slot_reservation.dto.ReservationRequest;
-import com.parking_slot_reservation.dto.ReservationResponse;
-import com.parking_slot_reservation.service.ReservationService;
+import com.parking_slot.Parking_Slot_valcare.dto.ReservationRequest;
+import com.parking_slot.Parking_Slot_valcare.dto.ReservationResponse;
+import com.parking_slot.Parking_Slot_valcare.service.ReservationService;
 
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/reservations")
 public class ReservationController {
+
     private final ReservationService reservationService;
-    public ReservationController(ReservationService reservationService) { this.reservationService = reservationService; }
+
+    public ReservationController(ReservationService reservationService) {
+        this.reservationService = reservationService;
+    }
 
     @PostMapping
     public ResponseEntity<ReservationResponse> reserve(@Valid @RequestBody ReservationRequest request) {

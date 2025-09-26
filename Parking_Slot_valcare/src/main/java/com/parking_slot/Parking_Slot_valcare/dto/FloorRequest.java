@@ -1,5 +1,4 @@
-package com.parking_slot_reservation.dto;
-
+package com.parking_slot.Parking_Slot_valcare.dto;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PositiveOrZero;

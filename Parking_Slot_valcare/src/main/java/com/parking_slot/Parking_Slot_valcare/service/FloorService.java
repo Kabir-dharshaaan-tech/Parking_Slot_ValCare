@@ -1,7 +1,8 @@
-package com.parking_slot_reservation.service;
+package com.parking_slot.Parking_Slot_valcare.service;
 
-import com.parking_slot_reservation.dto.FloorRequest;
-import com.parking_slot_reservation.entity.Floor;
+
+import com.parking_slot.Parking_Slot_valcare.dto.FloorRequest;
+import com.parking_slot.Parking_Slot_valcare.entity.Floor;
 
 import java.util.List;
 

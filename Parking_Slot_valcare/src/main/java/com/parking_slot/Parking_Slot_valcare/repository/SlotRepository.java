@@ -1,12 +1,13 @@
-package com.parking_slot_reservation.repository;
+package com.parking_slot.Parking_Slot_valcare.repository;
+
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import com.parking_slot_reservation.entity.Slot;
-import com.parking_slot_reservation.entity.VehicleType;
+import com.parking_slot.Parking_Slot_valcare.entity.Slot;
+import com.parking_slot.Parking_Slot_valcare.entity.VehicleType;
 
 public interface SlotRepository extends JpaRepository<Slot, Long> {
     List<Slot> findByFloorId(Long floorId);

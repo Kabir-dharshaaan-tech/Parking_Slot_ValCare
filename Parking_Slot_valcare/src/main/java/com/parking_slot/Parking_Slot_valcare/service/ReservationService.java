@@ -1,9 +1,9 @@
-package com.parking_slot_reservation.service;
+package com.parking_slot.Parking_Slot_valcare.service;
 
 import java.util.List;
 
-import com.parking_slot_reservation.dto.ReservationRequest;
-import com.parking_slot_reservation.dto.ReservationResponse;
+import com.parking_slot.Parking_Slot_valcare.dto.ReservationRequest;
+import com.parking_slot.Parking_Slot_valcare.dto.ReservationResponse;
 
 public interface ReservationService {
     ReservationResponse createReservation(ReservationRequest req);

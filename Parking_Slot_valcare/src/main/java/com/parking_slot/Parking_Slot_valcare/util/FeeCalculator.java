@@ -1,5 +1,4 @@
-package com.parking_slot_reservation.util;
-
+package com.parking_slot.Parking_Slot_valcare.util;
 import java.time.Duration;
 import java.time.OffsetDateTime;
 

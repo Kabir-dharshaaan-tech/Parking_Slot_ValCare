@@ -1,4 +1,4 @@
-package com.parking_slot_reservation.config;
+package com.parking_slot.Parking_Slot_valcare.config;
 
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;

@@ -1,18 +1,19 @@
-package com.parking_slot_reservation.service.impl;
-
-import com.parking_slot_reservation.dto.SlotRequest;
-import com.parking_slot_reservation.entity.Floor;
-import com.parking_slot_reservation.entity.Slot;
-import com.parking_slot_reservation.entity.VehicleType;
-import com.parking_slot_reservation.exception.ResourceNotFoundException;
-import com.parking_slot_reservation.repository.FloorRepository;
-import com.parking_slot_reservation.repository.SlotRepository;
-import com.parking_slot_reservation.service.SlotService;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+package com.parking_slot.Parking_Slot_valcare.service.impl;
 
 import java.time.OffsetDateTime;
 import java.util.List;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.parking_slot.Parking_Slot_valcare.dto.SlotRequest;
+import com.parking_slot.Parking_Slot_valcare.entity.Floor;
+import com.parking_slot.Parking_Slot_valcare.entity.Slot;
+import com.parking_slot.Parking_Slot_valcare.entity.VehicleType;
+import com.parking_slot.Parking_Slot_valcare.exception.ResourceNotFoundException;
+import com.parking_slot.Parking_Slot_valcare.repository.FloorRepository;
+import com.parking_slot.Parking_Slot_valcare.repository.SlotRepository;
+import com.parking_slot.Parking_Slot_valcare.service.SlotService;
 
 @Service
 @Transactional

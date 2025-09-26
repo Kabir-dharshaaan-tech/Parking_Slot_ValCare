@@ -1,4 +1,4 @@
-package com.parking_slot_reservation.dto;
+package com.parking_slot.Parking_Slot_valcare.dto;
 
 import java.time.OffsetDateTime;
 

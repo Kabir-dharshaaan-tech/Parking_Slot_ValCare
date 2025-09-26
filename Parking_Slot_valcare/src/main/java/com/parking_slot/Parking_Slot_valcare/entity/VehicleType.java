@@ -1,4 +1,4 @@
-package com.parking_slot_reservation.entity;
+package com.parking_slot.Parking_Slot_valcare.entity;
 
 public enum VehicleType {
     FOUR_WHEELER(30.0),

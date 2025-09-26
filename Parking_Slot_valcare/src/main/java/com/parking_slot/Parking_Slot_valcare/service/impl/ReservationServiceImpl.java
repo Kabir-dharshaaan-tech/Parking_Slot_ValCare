@@ -1,26 +1,27 @@
-package com.parking_slot_reservation.service.impl;
+package com.parking_slot.Parking_Slot_valcare.service.impl;
 
-import com.parking_slot_reservation.dto.ReservationRequest;
-import com.parking_slot_reservation.dto.ReservationResponse;
-import com.parking_slot_reservation.entity.Reservation;
-import com.parking_slot_reservation.entity.Slot;
-import com.parking_slot_reservation.entity.VehicleType;
-import com.parking_slot_reservation.exception.InvalidReservationException;
-import com.parking_slot_reservation.exception.ResourceNotFoundException;
-import com.parking_slot_reservation.repository.ReservationRepository;
-import com.parking_slot_reservation.repository.SlotRepository;
-import com.parking_slot_reservation.util.FeeCalculator;
+import com.parking_slot.Parking_Slot_valcare.dto.ReservationRequest;
+import com.parking_slot.Parking_Slot_valcare.dto.ReservationResponse;
+import com.parking_slot.Parking_Slot_valcare.entity.Reservation;
+import com.parking_slot.Parking_Slot_valcare.entity.Slot;
+import com.parking_slot.Parking_Slot_valcare.entity.VehicleType;
+import com.parking_slot.Parking_Slot_valcare.exception.InvalidReservationException;
+import com.parking_slot.Parking_Slot_valcare.exception.ResourceNotFoundException;
+import com.parking_slot.Parking_Slot_valcare.repository.ReservationRepository;
+import com.parking_slot.Parking_Slot_valcare.repository.SlotRepository;
+import com.parking_slot.Parking_Slot_valcare.service.ReservationService;
+import com.parking_slot.Parking_Slot_valcare.util.FeeCalculator;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Duration;
-import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
 @Transactional
-public class ReservationServiceImpl implements com.parking_slot_reservation.service.ReservationService {
+public class ReservationServiceImpl implements ReservationService {
 
     private final ReservationRepository reservationRepository;
     private final SlotRepository slotRepository;
@@ -32,12 +33,11 @@ public class ReservationServiceImpl implements com.parking_slot_reservation.serv
 
     @Override
     public ReservationResponse createReservation(ReservationRequest req) {
-        // basic validations
+        // Validation
         if (!req.getStartTime().isBefore(req.getEndTime())) {
             throw new InvalidReservationException("startTime must be before endTime");
         }
-        Duration dur = Duration.between(req.getStartTime(), req.getEndTime());
-        if (dur.toMinutes() > 24 * 60) {
+        if (Duration.between(req.getStartTime(), req.getEndTime()).toMinutes() > 24 * 60) {
             throw new InvalidReservationException("Reservation duration cannot exceed 24 hours");
         }
 
@@ -49,12 +49,13 @@ public class ReservationServiceImpl implements com.parking_slot_reservation.serv
             throw new InvalidReservationException("Slot does not support vehicle type " + requested);
         }
 
-        // check availability (no overlapping)
-        List<Reservation> overlaps = reservationRepository.findOverlapping(slot.getId(), req.getStartTime(), req.getEndTime());
+        // Check overlap
+        var overlaps = reservationRepository.findOverlapping(slot.getId(), req.getStartTime(), req.getEndTime());
         if (!overlaps.isEmpty()) {
             throw new InvalidReservationException("Slot already reserved during requested time");
         }
 
+        // Fee calculation
         long hours = FeeCalculator.calculateHours(req.getStartTime(), req.getEndTime());
         double rate = requested.getRatePerHour();
         double total = FeeCalculator.calculateTotal(hours, rate);
@@ -70,8 +71,7 @@ public class ReservationServiceImpl implements com.parking_slot_reservation.serv
         r.setTotalAmount(total);
         r.setStatus("CONFIRMED");
 
-        Reservation saved = reservationRepository.save(r);
-        return toResponse(saved);
+        return toResponse(reservationRepository.save(r));
     }
 
     @Override
@@ -91,7 +91,9 @@ public class ReservationServiceImpl implements com.parking_slot_reservation.serv
 
     @Override
     public List<ReservationResponse> listReservations() {
-        return reservationRepository.findAll().stream().map(this::toResponse).collect(Collectors.toList());
+        return reservationRepository.findAll().stream()
+                .map(this::toResponse)
+                .collect(Collectors.toList());
     }
 
     private ReservationResponse toResponse(Reservation r) {

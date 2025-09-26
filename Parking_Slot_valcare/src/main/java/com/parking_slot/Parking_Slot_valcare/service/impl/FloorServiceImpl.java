@@ -1,12 +1,11 @@
+package com.parking_slot.Parking_Slot_valcare.service.impl;
 
+import com.parking_slot.Parking_Slot_valcare.dto.FloorRequest;
+import com.parking_slot.Parking_Slot_valcare.entity.Floor;
+import com.parking_slot.Parking_Slot_valcare.exception.ResourceNotFoundException;
+import com.parking_slot.Parking_Slot_valcare.repository.FloorRepository;
+import com.parking_slot.Parking_Slot_valcare.service.FloorService;
 
-package com.parking_slot_reservation.service.impl;
-
-import com.parking_slot_reservation.dto.FloorRequest;
-import com.parking_slot_reservation.entity.Floor;
-import com.parking_slot_reservation.exception.ResourceNotFoundException;
-import com.parking_slot_reservation.repository.FloorRepository;
-import com.parking_slot_reservation.service.FloorService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,6 +14,7 @@ import java.util.List;
 @Service
 @Transactional
 public class FloorServiceImpl implements FloorService {
+
     private final FloorRepository floorRepository;
 
     public FloorServiceImpl(FloorRepository floorRepository) {
@@ -34,6 +34,7 @@ public class FloorServiceImpl implements FloorService {
 
     @Override
     public Floor getFloor(Long id) {
-        return floorRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Floor not found: " + id));
+        return floorRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Floor not found: " + id));
     }
 }
