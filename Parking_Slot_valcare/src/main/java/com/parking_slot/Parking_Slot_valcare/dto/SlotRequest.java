@@ -8,12 +8,12 @@ public class SlotRequest {
     private String slotNumber;
 
     @NotNull
-    private String vehicleType; // FOUR_WHEELER or TWO_WHEELER
+    private String vehicleType; 
 
     @NotNull
     private Long floorId;
 
-    // getters & setters
+    
     public String getSlotNumber() { return slotNumber; }
     public void setSlotNumber(String slotNumber) { this.slotNumber = slotNumber; }
     public String getVehicleType() { return vehicleType; }

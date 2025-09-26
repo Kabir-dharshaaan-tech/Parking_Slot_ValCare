@@ -14,7 +14,7 @@ public class ReservationResponse {
     private double totalAmount;
     private String status;
 
-    // getters & setters
+   
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
     public Long getSlotId() { return slotId; }

@@ -23,7 +23,7 @@ public class ReservationRequest {
     @NotNull
     private OffsetDateTime endTime;
 
-    // getters & setters
+   
     public Long getSlotId() { return slotId; }
     public void setSlotId(Long slotId) { this.slotId = slotId; }
     public String getVehicleType() { return vehicleType; }

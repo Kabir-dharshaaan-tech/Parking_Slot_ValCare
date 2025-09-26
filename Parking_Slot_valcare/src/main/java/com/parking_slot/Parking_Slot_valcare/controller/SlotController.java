@@ -37,7 +37,7 @@ public class SlotController {
     @GetMapping
     public ResponseEntity<List<Slot>> getSlots(@RequestParam(value = "floorId", required = false) Long floorId) {
         if (floorId == null) {
-            // Optional: replace List.of() with slotService.getAllSlots() if you have that method
+           
             return ResponseEntity.ok(List.of());
         } else {
             return ResponseEntity.ok(slotService.getSlotsByFloor(floorId));

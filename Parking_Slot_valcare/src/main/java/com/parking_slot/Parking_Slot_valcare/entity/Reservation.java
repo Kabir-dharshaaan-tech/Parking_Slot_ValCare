@@ -41,9 +41,8 @@ public class Reservation {
     @Version
     private Long version;
 
-    private String status = "CONFIRMED"; // or CANCELLED
+    private String status = "CONFIRMED"; 
 
-    // ✅ Constructors
     public Reservation() {}
 
     public Reservation(String vehicleNumber, VehicleType vehicleType, OffsetDateTime startTime, OffsetDateTime endTime,
@@ -59,7 +58,6 @@ public class Reservation {
         this.status = status;
     }
 
-    // ✅ Getters & Setters
     public Long getId() { return id; }
 
     public String getVehicleNumber() { return vehicleNumber; }

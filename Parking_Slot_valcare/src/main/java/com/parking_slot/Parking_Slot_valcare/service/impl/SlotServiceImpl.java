@@ -44,8 +44,8 @@ public class SlotServiceImpl implements SlotService {
     public List<Slot> findAvailableSlots(OffsetDateTime start, OffsetDateTime end, String vehicleType) {
         VehicleType vt = vehicleType == null ? null : VehicleType.valueOf(vehicleType);
         if (vt == null) {
-            // return all slots not reserved for the period (simple query omitted for brevity)
-            return slotRepository.findAvailableSlots(start, end, VehicleType.FOUR_WHEELER); // example: filter by FOUR_WHEELER
+           
+            return slotRepository.findAvailableSlots(start, end, VehicleType.FOUR_WHEELER); 
         }
         return slotRepository.findAvailableSlots(start, end, vt);
     }

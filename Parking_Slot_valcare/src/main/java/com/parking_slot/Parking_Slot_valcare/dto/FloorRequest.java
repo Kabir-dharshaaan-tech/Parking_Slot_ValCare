@@ -10,7 +10,7 @@ public class FloorRequest {
     @NotNull @PositiveOrZero
     private Integer level;
 
-    // getters & setters
+    
     public String getFloorName() { return floorName; }
     public void setFloorName(String floorName) { this.floorName = floorName; }
     public Integer getLevel() { return level; }

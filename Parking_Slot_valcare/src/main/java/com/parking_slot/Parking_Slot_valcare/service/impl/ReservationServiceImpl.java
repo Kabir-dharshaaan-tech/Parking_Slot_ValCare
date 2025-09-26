@@ -33,7 +33,7 @@ public class ReservationServiceImpl implements ReservationService {
 
     @Override
     public ReservationResponse createReservation(ReservationRequest req) {
-        // Validation
+        
         if (!req.getStartTime().isBefore(req.getEndTime())) {
             throw new InvalidReservationException("startTime must be before endTime");
         }
